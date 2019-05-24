@@ -16,7 +16,11 @@
     }
 
     #result {
-        margin: 0px 0 0 300px;
+        margin: 0px 0 100px 300px;
+    }
+
+    #image{
+        margin: 50px 0 50px 300px;
     }
 </style>
 <html>
@@ -25,14 +29,26 @@
     <title>手写字体</title>
 </head>
 <body>
+
+<div style="">
+
+
+</div>
 <canvas id="canvas" width="280" height="280"></canvas>
 <button onclick="predict()">预测</button>
-<div id="result">
-    识别结果：<font size="18" id="digit"></font>
+
+
+<div id="image">
+    <form id="imageForm" >
+        <input  type="file"  name="file" id="imageFile"/>
+        <button id="upload"   >开始识别</button>
+    </form>
 </div>
+
+
 </body>
 </html>
-<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     /*获取绘制环境*/
     var canvas = $('#canvas')[0].getContext('2d');
@@ -70,4 +86,31 @@
             }
         });
     }
+
+
+        $("#upload").click(function () {
+            var formData = new FormData();
+            formData.append("file", document.getElementById("imageFile").files[0]);
+            $.ajax({
+                url: "upImage",
+                type: "POST",
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    alert(data);
+                },
+                error: function () {
+                    alert("上传失败！");
+                }
+            });
+        });
+
+
+
+
+
+
 </script>

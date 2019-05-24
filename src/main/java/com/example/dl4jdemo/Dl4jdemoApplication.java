@@ -9,4 +9,5 @@ public class Dl4jdemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Dl4jdemoApplication.class, args);
 	}
+
 }
