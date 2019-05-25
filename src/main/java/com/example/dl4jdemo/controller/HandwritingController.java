@@ -43,7 +43,7 @@ public class HandwritingController implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
 
-        net = ModelSerializer.restoreMultiLayerNetwork(new File(path+"\\model.zip"));
+        net = ModelSerializer.restoreMultiLayerNetwork(new File(path+"/model.zip"));
 
     }
 
@@ -67,7 +67,7 @@ public class HandwritingController implements InitializingBean {
 
         DataSetIterator testIter = new RecordReaderDataSetIterator(testRR, 1);
         testIter.setPreProcessor(scaler);
-        INDArray array = testIter.next().getFeatureMatrix();
+        INDArray array = testIter.next().getFeatures();
         return net.predict(array)[0];
     }
 

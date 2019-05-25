@@ -73,7 +73,7 @@
     function predict() {
         var img = $('#canvas')[0].toDataURL("image/png");
         $.ajax({
-            url : "/Identify",
+            url : "/number/Identify",
             type : "get",
             data : {
                 "img" : img.substring(img.indexOf(",") + 1)
@@ -92,7 +92,7 @@
             var formData = new FormData();
             formData.append("file", document.getElementById("imageFile").files[0]);
             $.ajax({
-                url: "upImage",
+                url: "/number/upImage",
                 type: "POST",
                 data: formData,
                 async: false,

@@ -1,8 +1,6 @@
 package com.example.dl4jdemo.controller;
 
 
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.datavec.api.split.FileSplit;
 import org.datavec.image.loader.NativeImageLoader;
 import org.datavec.image.recordreader.ImageRecordReader;
@@ -16,13 +14,14 @@ import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import tachyon.org.jets3t.service.model.MultipartPart;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.POST;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -45,7 +44,7 @@ public class UploadImageRecognition implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        net = ModelSerializer.restoreMultiLayerNetwork(new File(path + "\\model.zip"));
+        net = ModelSerializer.restoreMultiLayerNetwork(new File(path + "/model.zip"));
 
     }
 

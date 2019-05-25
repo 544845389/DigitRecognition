@@ -29,6 +29,8 @@
 		<datavec.version>0.7.1</datavec.version>
 		<scala.binary.version>2.10</scala.binary.version>
 
+		<skipTests>true</skipTests>
+
 	</properties>
 
 	<dependencies>
@@ -56,24 +58,33 @@
 
 		<dependency>
 			<groupId>org.nd4j</groupId>
-			<artifactId>nd4j-native</artifactId>
-			<version>${nd4j.version}</version>
+			<artifactId>nd4j-native-platform</artifactId>
+			<version>0.7.1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.deeplearning4j</groupId>
-			<artifactId>dl4j-spark_2.11</artifactId>
-			<version>${dl4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.datavec</groupId>
-			<artifactId>datavec-spark_${scala.binary.version}</artifactId>
-			<version>${datavec.version}</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.deeplearning4j</groupId>
 			<artifactId>deeplearning4j-core</artifactId>
-			<version>${dl4j.version}</version>
+			<version>0.7.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.datavec</groupId>
+			<artifactId>datavec-api</artifactId>
+			<version>0.7.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.datavec</groupId>
+			<artifactId>datavec-data-image</artifactId>
+			<version>0.7.1</version>
+		</dependency>
+
+
+		<!--<dependency>-->
+		<!--<groupId>org.datavec</groupId>-->
+		<!--<artifactId>datavec-spark_${scala.binary.version}</artifactId>-->
+		<!--<version>1.0.0-beta4_spark_1.0.0-beta4</version>-->
+		<!--</dependency>-->
 
 
 	</dependencies>
@@ -83,6 +94,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
