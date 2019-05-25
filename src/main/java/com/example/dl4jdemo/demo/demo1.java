@@ -30,7 +30,6 @@ public class demo1 {
      * @throws Exception
      */
 
-
     public static void main(String[] args) throws Exception {
 
         int nChannels = 1;      //black & white picture, 3 if color image
